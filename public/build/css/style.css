@@ -30,6 +30,7 @@ body {
   margin-bottom: 150px;
   background-color: #3B3939;
   color: white;
+  border: none;
 }
 #calculate button {
   width: 22%;
@@ -37,12 +38,19 @@ body {
   font-size: 30px;
   margin: 2px;
   border-radius: 10px;
+  border: none;
 }
-#calculate #zero, #calculate #reset, #calculate #modulo {
+#calculate button:hover {
+  background-color: #676767;
+}
+#calculate #zero, #calculate #reset, #calculate #modulo, #calculate #result {
   width: 45.5%;
 }
 #calculate #modulo, #calculate #multiplication, #calculate #subtraction, #calculate #addition {
   background-color: #3B3939;
+}
+#calculate #modulo:hover, #calculate #multiplication:hover, #calculate #subtraction:hover, #calculate #addition:hover {
+  background-color: #282828;
 }
 #calculate .grey {
   background-color: #818181;
@@ -50,8 +58,14 @@ body {
 #calculate #reset {
   background-color: #FF2525;
 }
+#calculate #reset:hover {
+  background-color: #c90f0f;
+}
 #calculate #result {
   background-color: #FF7C00;
+}
+#calculate #result:hover {
+  background-color: #c0630b;
 }
 #calculate #modulo, #calculate #seven, #calculate #four, #calculate #one, #calculate #zero {
   margin-left: 20px;

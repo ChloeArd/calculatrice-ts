@@ -30,6 +30,7 @@ body {
     margin-bottom: 150px;
     background-color: #3B3939;
     color: white;
+    border: none;
   }
 
   button {
@@ -38,14 +39,22 @@ body {
     font-size: 30px;
     margin: 2px;
     border-radius: 10px;
+    border: none;
+
+    &:hover {
+      background-color: #676767;
+    }
   }
 
-  #zero, #reset, #modulo {
+  #zero, #reset, #modulo, #result {
     width: 45.5%;
   }
 
   #modulo, #multiplication, #subtraction, #addition {
     background-color: #3B3939;
+    &:hover {
+      background-color: #282828;
+    }
   }
 
   .grey {
@@ -54,17 +63,22 @@ body {
 
   #reset {
     background-color: #FF2525;
+    &:hover {
+      background-color: #c90f0f;
+    }
   }
 
   #result {
     background-color: #FF7C00;
+    &:hover {
+      background-color: #c0630b;
+    }
   }
 
   #modulo, #seven, #four, #one, #zero {
     margin-left: 20px;
   }
 }
-
 
 @media screen and (max-width: 600px) {
   #calculate {
