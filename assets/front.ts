@@ -13,14 +13,15 @@ for (let i = 0; i < tableID.length; i++) {
         let value :string = button.innerHTML;
         count(value, i);
         if (button.id === "addition" || button.id === "modulo" || button.id === "multiplication" || button.id === "subtraction") {
-                const idAdd = document.getElementById("addition") as HTMLButtonElement;
-                idAdd.disabled = Boolean('true');
-                const idModulo = document.getElementById("modulo") as HTMLButtonElement;
-                idModulo.disabled = Boolean('true');
-                const idSub = document.getElementById("subtraction") as HTMLButtonElement;
-                idSub.disabled = Boolean('true');
-                const idMulti = document.getElementById("multiplication") as HTMLButtonElement;
-                idMulti.disabled = Boolean('true');
+            // block operation buttons
+            const idAdd = document.getElementById("addition") as HTMLButtonElement;
+            idAdd.disabled = Boolean('true');
+            const idModulo = document.getElementById("modulo") as HTMLButtonElement;
+            idModulo.disabled = Boolean('true');
+            const idSub = document.getElementById("subtraction") as HTMLButtonElement;
+            idSub.disabled = Boolean('true');
+            const idMulti = document.getElementById("multiplication") as HTMLButtonElement;
+            idMulti.disabled = Boolean('true');
         }
     });
 }
@@ -55,6 +56,7 @@ result.addEventListener("click", () => {
            tableNumberBefore.splice(0, tableNumberBefore.length);
            tableNumberAfter.splice(0, tableNumberAfter.length)
 
+           // block all buttons
            for (let i = 0; i < tableID.length; i++) {
                const button = document.getElementById(tableID[i]) as HTMLButtonElement;
                button.disabled = Boolean('true');
@@ -67,11 +69,15 @@ result.addEventListener("click", () => {
 const reset = document.getElementById("reset") as HTMLButtonElement;
 reset.addEventListener("click", () => {
    inputValue.value = "";
+    // activate all buttons
     for (let i = 0; i < tableID.length; i++) {
         const button = document.getElementById(tableID[i]) as HTMLButtonElement;
         button.removeAttribute("disabled")
     }
 });
+
+// block all keyboard keys
+document.body.onkeydown = () => { return false; }
 
 // Displays the digits clicked by the user in the input
 function count (number: number|string, i: number) :void {
@@ -85,7 +91,7 @@ function count (number: number|string, i: number) :void {
 }
 
 // calculate
-function calculate(a: number, b: number, operation: string) {
+function calculate(a: number, b: number, operation: string): number | undefined {
     switch (operation) {
         case "+":
             inputValue.value =  String(a + b);
