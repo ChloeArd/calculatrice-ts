@@ -9,12 +9,10 @@ const tableNumberAfter : number[] = [];
 for (let i = 0; i < tableID.length; i++) {
     const button = document.getElementById(tableID[i]) as HTMLButtonElement;
 
-    let click = 0;
     button.addEventListener("click", () => {
         let value :string = button.innerHTML;
         count(value, i);
         if (button.id === "addition" || button.id === "modulo" || button.id === "multiplication" || button.id === "subtraction") {
-            if (click !== 0) {
                 const idAdd = document.getElementById("addition") as HTMLButtonElement;
                 idAdd.disabled = Boolean('true');
                 const idModulo = document.getElementById("modulo") as HTMLButtonElement;
@@ -23,11 +21,8 @@ for (let i = 0; i < tableID.length; i++) {
                 idSub.disabled = Boolean('true');
                 const idMulti = document.getElementById("multiplication") as HTMLButtonElement;
                 idMulti.disabled = Boolean('true');
-                click = 0;
-            }
         }
     });
-    click++;
 }
 
 // display the result of the calculation in the input
@@ -60,7 +55,10 @@ result.addEventListener("click", () => {
            tableNumberBefore.splice(0, tableNumberBefore.length);
            tableNumberAfter.splice(0, tableNumberAfter.length)
 
-           notDisabled();
+           for (let i = 0; i < tableID.length; i++) {
+               const button = document.getElementById(tableID[i]) as HTMLButtonElement;
+               button.disabled = Boolean('true');
+           }
        }
    }
 });
@@ -69,7 +67,10 @@ result.addEventListener("click", () => {
 const reset = document.getElementById("reset") as HTMLButtonElement;
 reset.addEventListener("click", () => {
    inputValue.value = "";
-   notDisabled();
+    for (let i = 0; i < tableID.length; i++) {
+        const button = document.getElementById(tableID[i]) as HTMLButtonElement;
+        button.removeAttribute("disabled")
+    }
 });
 
 // Displays the digits clicked by the user in the input
@@ -103,15 +104,4 @@ function calculate(a: number, b: number, operation: string) {
             return a % b;
             break;
     }
-}
-
-function notDisabled() {
-    const idAdd = document.getElementById("addition") as HTMLButtonElement;
-    idAdd.removeAttribute("disabled")
-    const idModulo = document.getElementById("modulo") as HTMLButtonElement;
-    idModulo.removeAttribute("disabled")
-    const idSub = document.getElementById("subtraction") as HTMLButtonElement;
-    idSub.removeAttribute("disabled")
-    const idMulti = document.getElementById("multiplication") as HTMLButtonElement;
-    idMulti.removeAttribute("disabled")
 }
